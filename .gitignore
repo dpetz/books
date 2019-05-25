@@ -1,0 +1,22 @@
+.DS_Store
+
+# https://github.com/playframework/playframework/blob/master/.gitignore
+logs
+*.iml
+target
+.idea
+.idea_modules
+.vscode
+RUNNING_PID
+generated.keystore
+generated.truststore
+*.log
+
+# https://www.playframework.com/documentation/2.6.x/Anatomy
+logs
+project/project
+project/target
+target
+tmp
+dist
+.cache

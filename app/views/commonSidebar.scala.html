@@ -1,16 +1,18 @@
 @()
 @defining(play.core.PlayVersion.current) { version =>
-<h3>Table of Contents</h3>
+<h3>Search</h3>
 <ul>
-  <li><a href="@routes.HomeController.search("Greenblatt")">Run test search</a>
+  <li><a href="@routes.HomeController.search("the+annotated+turing")">The Annotated Turing</a>
 </ul>
-<h3>Sources</h3>
+  <h3>System</h3>
+  <ul>
+    <li><a href="@routes.HomeController.elastic">Database</a>
+  </ul>
+
+
+  <h3>REeources</h3>
 <ul>
   <li><a href="https://www.buecher.de/" target="_blank">bücher.de</a></li>
-</ul>
-  <h3>Technology</h3>
-  <ul>
-    <li><a href="https://www.playframework.com/" target="_blank">Play Framework</a></li>
-  </ul>
+
 
 }

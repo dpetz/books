@@ -24,10 +24,11 @@ object amazon {
   def search(query:String) : Future[Response] = {
 
     // https://www.amazon.de/s?k=the+annotated+turing
-    val url = "https://www.amazon.de/s?k="+ query
+    val url = "https://www.amazon.com/s?k="+ query
 
     import scala.io.Source
-    val html = Source.fromURL(url).mkString
+    val html = Source.fromURL(url,"ISO-8859-1").mkString //  ISO-8859-1 UTF-16 ISO-8859-15 UTF-8
+    print(html)
 
     val time: Long = System.currentTimeMillis / 1000
 

@@ -8,6 +8,8 @@ import wabisabi.Client
 import com.ning.http.client.Response
 import play.api.libs.concurrent.Futures._
 import play.api.libs.concurrent.CustomExecutionContext
+import models.Elastic
+
 
 import scala.concurrent.ExecutionContext
 
@@ -35,16 +37,19 @@ class HomeController @Inject()(myExecutionContext: MyExecutionContext, cc: Contr
     Ok(views.html.hello())
   }
 
-  def search(query:String) = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.search(query))
+  def search(query:String) = Action.async {
+    models.amazon.search(query).map{
+      response => Ok(response.getResponseBody)
+    }(myExecutionContext)
   }
 
-
-  // https://asynchttpclient.github.io/async-http-client/apidocs/com/ning/http/client/Response.html
-
-  def elastic = Action.async {
-    val client = new Client("http://localhost:9200")
-      client.health().map { response => Ok(response.getStatusText)
+  /**
+    * Checks database is available and shows summary of contents.
+    */
+  def check_database = Action.async {
+    Elastic.client().health().map {
+      response => Ok(response.getStatusText)
     }(myExecutionContext)
+  }
 
-}}
+}

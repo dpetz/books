@@ -6,7 +6,7 @@
 # An example controller showing a sample home page
 GET     /                                   controllers.HomeController.hello
 GET     /search                            controllers.HomeController.search(query:String)
-GET     /database                            controllers.HomeController.elastic
+GET     /database                            controllers.HomeController.check_database
 
 
 # Map static resources from the /public folder to the /assets URL path
